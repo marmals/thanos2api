@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser')
 
 
 const connectDB = require('./db');
@@ -10,17 +11,11 @@ dotenv.config({ path: './config.env' });
 const app = express();
 connectDB();
 
+app.use(bodyParser.json())
+
 // Routes
-app.use('/test', require('./routes/test')); 
 app.use('/sessions', require('./routes/sessions')); 
 app.use('/session', require('./routes/session')); 
-
-
-
-
-
-
-
 
 
 

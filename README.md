@@ -10,29 +10,24 @@ Each session has the following structure:
 
 ```json
 {
-    "_id":"5e8c3658b300d10017a74a01",
-    "startDate": "2020-04-15T10:20:35",
-    "stopDate": "2020-04-15T10:25:52",
-    "locations":[
+    "_id": "5e970a51336b2a37c97d7aeb",
+    "startDate": "2020-04-15T13:21:21.254Z",
+    "stopDate": null,
+    "locations": [
         {
-            "x":"232",
-            "y":"325"
-        },
-        {
-            "x":"654",
-            "y":"231"
+            "_id": "5e970a92336b2a37c97d7aec",
+            "x": 5,
+            "y": 5
         }
     ],
-    "collisions":[
+    "collisions": [
         {
-            "x":"232",
-            "y":"325"
-        },
-        {
-            "x":"654",
-            "y":"231"
+            "_id": "5e970aa2336b2a37c97d7aed",
+            "x": 6,
+            "y": 6
         }
-    ]
+    ],
+    "__v": 2
 }
 ```
 
@@ -47,112 +42,99 @@ An _id and startDate is generated, and a base session is returned:
 
 ```json
 {
-    "_id":2,
-    "startDate": "2020-04-15T10:20:35",
-    "stopDate": null,
-    "locations":[],
-    "collisions":[]
+    "_id": "5e970bb6336b2a37c97d7aee",
+    "startDate": "2020-04-15T13:27:18.938Z",
+    "stopDate": null, 
+    "locations": [],
+    "collisions": [],
+    "__v": 0
 }
 ```
 
-The _id is then used for all subsequent calls regarding that session.
+The _id is then used for all subsequent calls regarding that session.  
 
-## POST /session/2/stop
-Terminates session 2
-
-## GET /sessions
-gets all sessions, including all posisions etc within them.
-
+## POST /session/5e96f5c1f0a3bd1fbecb30f5/stop
+Terminates session 5e96f5c1f0a3bd1fbecb30f5  
+When a session is terminated the "stopDate" is automatically updated. 
 
 ```json
 {
-    "_id":0,
-    "startDate": "2020-04-15T10:20:35",
-    "stopDate": "2020-04-15T10:20:47",
-    "locations":[
-        {
-            "x":"232",
-            "y":"325"
-        },
-        {
-            "x":"654",
-            "y":"231"
-        }
-    ],
-    "collisions":[
-        {
-            "x":"232",
-            "y":"325"
-        },
-        {
-            "x":"654",
-            "y":"231"
-        }
-    ]
-},
-{
-    "_id":1,
-    "startDate": "2020-04-16T13:56:03",
-    "stopDate": "2020-04-16T14:31:23",
-    "locations":[
-        {
-            "x":"63",
-            "y":"156"
-        },
-        {
-            "x":"263",
-            "y":"27"
-        }
-    ],
-    "collisions":[
-        {
-            "x":"722",
-            "y":"433"
-        },
-        {
-            "x":"724",
-            "y":"765"
-        }
-    ]
+    ...
+    "stopDate": "2020-04-15T11:56:20.545Z7",
+    ...
 }
 ```
 
-## POST /session/2/locations
-Logs a new location in session 2
+## GET /sessions
+Gets all sessions, including all positions etc within them.  
+Example:
+```json
+[
+    {
+        "_id": "5e970a51336b2a37c97d7aeb",
+        "startDate": "2020-04-15T13:21:21.254Z",
+        "stopDate": null,
+        "locations": [
+            {
+                "_id": "5e970a92336b2a37c97d7aec",
+                "x": 5,
+                "y": 5
+            }
+        ],
+        "collisions": [
+            {
+                "_id": "5e970aa2336b2a37c97d7aed",
+                "x": 6,
+                "y": 6
+            }
+        ],
+        "__v": 2
+    },
+    {
+        "_id": "5e970bb6336b2a37c97d7aee",
+        "startDate": "2020-04-15T13:27:18.938Z",
+        "stopDate": null,
+        "locations": [],
+        "collisions": [],
+        "__v": 0
+    }
+]
+```
+
+## POST /session/5e96f5c1f0a3bd1fbecb30f5/locations
+Logs a new location in session 5e96f5c1f0a3bd1fbecb30f5    
 Expects JSON body:
 
 ```json
-    {
-        "x": 100,
-        "y": 200
-    }
+{
+    "x": 100,
+    "y": 200
+}
 ```
 
-## GET /session/2/locations
-Gets all locations in session 2
+## GET /session/5e96f5c1f0a3bd1fbecb30f5/locations
+Gets all locations in session 5e96f5c1f0a3bd1fbecb30f5   
 Returns json, example:
 
 ```json
-    [
-        {
-            "x":100,
-            "y":200
-        },
-        {
-            "x":412,
-            "y":214 
-        },
-        {
-            "x":563,
-            "y":72 
-        }
-    ]
+[
+    {
+        "_id": "5e970a92336b2a37c97d7aec",
+        "x": 5,
+        "y": 5
+    },
+    {
+        "_id": "5e970c92336b2a37c97d7aef",
+        "x": 52,
+        "y": 62
+    }
+]
 ```
 
 
-same syntax for collisions.
+## The syntax for collisions is identical, the following endpoints are available:
 
-## POST /session/2/collisions
+### POST /session/5e96f5c1f0a3bd1fbecb30f5/collisions
 
-## GET /session/2/collisions
+### GET /session/5e96f5c1f0a3bd1fbecb30f5/collisions
 
