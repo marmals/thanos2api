@@ -12,6 +12,8 @@ connectDB();
 
 // Routes
 app.use('/test', require('./routes/test')); 
+app.use('/sessions', require('./routes/sessions')); 
+app.use('/session', require('./routes/session')); 
 
 
 
