@@ -19,7 +19,18 @@ router.post("/:id/stop", async(req,res) => {
         const _id = req.params.id;
         const session = await Session.findById(_id);
         session.stopDate = new Date().toISOString();
+        await session.save()
         res.send(session);
+    }catch(err){
+        console.error(err.message)
+        return res.status(404).send("Something went wrong. Check the ID.");
+    }
+})
+router.post("/:id/delete", async(req, res) => {
+    try{
+        const _id = req.params.id;
+        await Session.findByIdAndDelete(_id);
+        res.send("Session deleted");
     }catch(err){
         console.error(err.message)
         return res.status(404).send("Something went wrong. Check the ID.");

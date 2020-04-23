@@ -65,6 +65,10 @@ When a session is terminated the "stopDate" is automatically updated.
 }
 ```
 
+## POST /session/5e96f5c1f0a3bd1fbecb30f5/delete
+Deletes session 5e96f5c1f0a3bd1fbecb30f5  
+This request delete the session with given id
+
 ## GET /sessions
 Gets all sessions, including all positions etc within them.  
 Example:
